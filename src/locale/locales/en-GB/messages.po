@@ -835,7 +835,7 @@ msgstr "Adult Content"
 
 #: src/screens/Moderation/index.tsx:423
 msgid "Adult content can only be enabled via the Web at <0>bsky.app</0>."
-msgstr "Adult content can only be enabled via the Web at <0>bsky.app</0>."
+msgstr "Adult content can only be enabled via the Web at <0>social.shatteredsky.net</0>."
 
 #: src/components/moderation/LabelPreference.tsx:247
 msgid "Adult content is disabled."

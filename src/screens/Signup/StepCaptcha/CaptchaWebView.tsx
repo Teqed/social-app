@@ -5,6 +5,7 @@ import {type ShouldStartLoadRequest} from 'react-native-webview/lib/WebViewTypes
 import {type SignupState} from '#/screens/Signup/state'
 
 const ALLOWED_HOSTS = [
+  'social.shatteredsky.net',
   'bsky.social',
   'bsky.app',
   'staging.bsky.app',
@@ -42,12 +43,12 @@ export function CaptchaWebView({
   }, [])
 
   const redirectHost = useMemo(() => {
-    if (!state?.serviceUrl) return 'bsky.app'
+    if (!state?.serviceUrl) return 'social.shatteredsky.net'
 
     return state?.serviceUrl &&
       new URL(state?.serviceUrl).host === 'staging.bsky.dev'
       ? 'app.staging.bsky.dev'
-      : 'bsky.app'
+      : 'social.shatteredsky.net'
   }, [state?.serviceUrl])
 
   const wasSuccessful = useRef(false)

@@ -26,7 +26,7 @@ export function Links() {
         </InlineLinkText>
         <InlineLinkText
           label="foo"
-          to="https://bsky.app/profile/bsky.app"
+          to="https://social.shatteredsky.net/profile/bsky.app"
           style={[a.text_md]}>
           Internal (bsky.app)
         </InlineLinkText>
@@ -36,13 +36,13 @@ export function Links() {
           color="primary"
           size="large"
           label="View @bsky.app's profile"
-          to="https://bsky.app/profile/bsky.app">
+          to="https://social.shatteredsky.net/profile/bsky.app">
           <ButtonText>Link as a button</ButtonText>
         </Link>
 
         <Link
           label="View @bsky.app's profile"
-          to="https://bsky.app/profile/bsky.app">
+          to="https://social.shatteredsky.net/profile/bsky.app">
           <View
             style={[
               a.flex_row,

@@ -43,7 +43,7 @@ export default function TopicScreen({
   }, [topic])
 
   const onShare = React.useCallback(() => {
-    const url = new URL('https://bsky.app')
+    const url = new URL('https://social.shatteredsky.net')
     url.pathname = `/topic/${topic}`
     shareUrl(url.toString())
   }, [topic])
