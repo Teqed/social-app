@@ -1,6 +1,6 @@
 # stolen from https://github.com/tgirlcloud/nix-templates/blob/main/node/flake.nix
 {
-  description = "catsky social dev flake";
+  description = "shatteredsky social dev flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";

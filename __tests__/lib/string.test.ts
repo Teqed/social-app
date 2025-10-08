@@ -267,11 +267,15 @@ describe('toShortUrl', () => {
 })
 
 describe('toShareUrl', () => {
-  const inputs = ['https://catsky.social', '/3jk7x4irgv52r', 'item/test/123']
+  const inputs = [
+    'https://social.shatteredsky.net',
+    '/3jk7x4irgv52r',
+    'item/test/123',
+  ]
   const outputs = [
-    'https://catsky.social',
-    'https://catsky.social/3jk7x4irgv52r',
-    'https://catsky.social/item/test/123',
+    'https://social.shatteredsky.net',
+    'https://social.shatteredsky.net/3jk7x4irgv52r',
+    'https://social.shatteredsky.net/item/test/123',
   ]
 
   it('appends https, when not present', () => {

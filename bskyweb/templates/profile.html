@@ -2,14 +2,14 @@
 
 {% block head_title %}
 {%- if profileView -%}
-  @{{ profileView.Handle }} on Catsky
+  @{{ profileView.Handle }} on Shattered Sky
 {%- else -%}
-  Catsky
+Shattered Sky
 {%- endif -%}
 {% endblock %}
 
 {% block html_head_extra -%}
-  <meta property="og:site_name" content="Catsky Social">
+  <meta property="og:site_name" content="Shattered Sky">
   <meta property="og:type" content="profile">
 {%- if requestURI %}
   <meta property="og:url" content="{{ requestURI }}">
@@ -51,7 +51,7 @@
     <meta property="og:description" content="This profile requires authentication to view.">
     <meta property="twitter:description" content="This profile requires authentication to view.">
   {% endif %}
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

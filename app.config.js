@@ -34,10 +34,10 @@ module.exports = function (_config) {
   return {
     expo: {
       version: VERSION,
-      name: 'Catsky',
-      slug: 'catsky',
-      scheme: 'catsky',
-      owner: 'catskysocial',
+      name: 'Shattered Sky',
+      slug: 'shatteredsky',
+      scheme: 'shatteredsky',
+      owner: 'teq',
       runtimeVersion: {
         policy: 'appVersion',
       },
@@ -152,7 +152,7 @@ module.exports = function (_config) {
           backgroundColor: '#1185FE',
         },
         googleServicesFile: './google-services.json',
-        package: 'social.catsky',
+        package: 'net.shatteredsky.social',
         intentFilters: [
           {
             action: 'VIEW',
@@ -200,7 +200,7 @@ module.exports = function (_config) {
         USE_SENTRY && [
           '@sentry/react-native/expo',
           {
-            organization: 'catskysocial',
+            organization: 'Teqed',
             project: 'app',
             url: 'https://sentry.io',
           },

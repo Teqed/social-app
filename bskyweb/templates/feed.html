@@ -2,15 +2,15 @@
 
 {% block head_title %}
 {%- if feedView -%}
-  {{ feedView.DisplayName }} by @{{ feedView.Creator.Handle }} | Catsky Feed
+  {{ feedView.DisplayName }} by @{{ feedView.Creator.Handle }} | Shattered Sky Feed
 {%- else -%}
-  Catsky
+Shattered Sky
 {%- endif -%}
 {% endblock %}
 
 {% block html_head_extra -%}
 {%- if feedView -%}
-  <meta property="og:site_name" content="Catsky Social">
+  <meta property="og:site_name" content="Shattered Sky">
   <meta property="og:type" content="website">
   {%- if requestURI %}
   <meta property="og:url" content="{{ requestURI }}">

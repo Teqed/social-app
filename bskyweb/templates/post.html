@@ -2,11 +2,11 @@
 
 {% block head_title %}
 {%- if postView -%}
-  @{{ postView.Author.Handle }} on Catsky
+  @{{ postView.Author.Handle }} on Shattered Sky
 {%- elif requiresAuth and profileHandle -%}
-  @{{ profileHandle }} on Catsky
+  @{{ profileHandle }} on Shattered Sky
 {%- else -%}
-  Catsky
+Shattered Sky
 {%- endif -%}
 {% endblock %}
 

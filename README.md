@@ -1,12 +1,12 @@
-# Catsky Social App
+# Shattered Sky Social App
 
-Welcome friends! This is the codebase for the Catsky Social app.
+This is the codebase for the Shattered Sky Social app.
 
 Get the app itself:
 
 - **Web: social.shatteredsky.net**
 
-<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/NekoDrone/catsky-social">
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/Teqed/social-app">
 <img src="https://github.com/ImranR98/Obtainium/blob/main/assets/graphics/badge_obtainium.png?raw=true"
 alt="Get it on Obtainium" align="center" height="54" /></a>
 
@@ -27,7 +27,7 @@ The Authenticated Transfer Protocol ("AT Protocol" or "atproto") is a decentrali
 
 The Bluesky Social application encompasses a set of schemas and APIs built in the overall AT Protocol framework. The namespace for these "Lexicons" is `app.bsky.*`.
 
-Catsky social is a soft fork of Bluesky social, and thus will also use those lexicons.
+Shattered Sky social is a soft fork of Bluesky social, and thus will also use those lexicons.
 
 ## Contributions
 

@@ -36,10 +36,10 @@ build-android-gradle: prebuild-android
 postbuild-web:
     # after doing the expo web build, we compress the bskyweb folder and send it to vps.
     # no need to build the go binary as we'll do that on vps.
-    tar -czf catskyweb.tar.gz bskyweb/
-    rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" catskyweb.tar.gz ci@${VPS_IP}:/tmp/catsky/
-    rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" scripts/seraphDeploy.sh ci@${VPS_IP}:/tmp/catsky/
-    
+    tar -czf shatteredskyweb.tar.gz bskyweb/
+    rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" shatteredskyweb.tar.gz ci@${VPS_IP}:/tmp/shatteredsky-social/
+    rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" scripts/seraphDeploy.sh ci@${VPS_IP}:/tmp/shatteredsky-social/
+
 [group('dev')]
 dev-android-setup: prebuild-android
     yarn android
