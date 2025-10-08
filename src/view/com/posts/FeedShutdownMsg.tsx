@@ -32,7 +32,7 @@ export function FeedShutdownMsg({feedUri}: {feedUri: string}) {
     f => f.value === feedUri && f.pinned,
   )
   const discoverFeedConfig = preferences?.savedFeeds?.find(
-    f => f.value === PROD_DEFAULT_FEED('whats-hot'),
+    f => f.value === PROD_DEFAULT_FEED('Discover'),
   )
   const hasFeedPinned = Boolean(feedConfig)
   const hasDiscoverPinned = Boolean(discoverFeedConfig?.pinned)
@@ -44,7 +44,7 @@ export function FeedShutdownMsg({feedUri}: {feedUri: string}) {
         Toast.show(_(msg`Removed from your feeds`))
       }
       if (hasDiscoverPinned) {
-        setSelectedFeed(`feedgen|${PROD_DEFAULT_FEED('whats-hot')}`)
+        setSelectedFeed(`feedgen|${PROD_DEFAULT_FEED('Discover')}`)
       }
     } catch (err: any) {
       Toast.show(
@@ -63,7 +63,7 @@ export function FeedShutdownMsg({feedUri}: {feedUri: string}) {
         forYouFeedConfig: feedConfig,
         discoverFeedConfig,
       })
-      setSelectedFeed(`feedgen|${PROD_DEFAULT_FEED('whats-hot')}`)
+      setSelectedFeed(`feedgen|${PROD_DEFAULT_FEED('Discover')}`)
       Toast.show(_(msg`The feed has been replaced with Discover.`))
     } catch (err: any) {
       Toast.show(
@@ -100,7 +100,7 @@ export function FeedShutdownMsg({feedUri}: {feedUri: string}) {
           This feed is no longer online. We are showing{' '}
           <InlineLinkText
             label={_(msg`The Discover feed`)}
-            to="/profile/bsky.app/feed/whats-hot"
+            to="/profile/quilling.dev/feed/Discover"
             style={[a.text_md]}>
             Discover
           </InlineLinkText>{' '}
