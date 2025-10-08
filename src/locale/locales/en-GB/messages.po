@@ -10207,7 +10207,7 @@ msgstr "What do you want to call your starter pack?"
 #: src/view/com/auth/SplashScreen.web.tsx:99
 #: src/view/com/composer/Composer.tsx:812
 msgid "What's up?"
-msgstr "What's up?"
+msgstr "Are you on the list?"
 
 #: src/components/dialogs/nuxs/InitialVerificationAnnouncement.tsx:146
 msgid "When you tap on a check, you’ll see which organizations have granted verification."
