@@ -18,7 +18,7 @@ describe('session', () => {
         "accounts": [],
         "currentAgentState": {
           "agent": {
-            "service": "https://public.api.bsky.app/",
+            "service": "https://api.shatteredsky.net/",
           },
           "did": undefined,
         },
@@ -107,7 +107,7 @@ describe('session', () => {
         ],
         "currentAgentState": {
           "agent": {
-            "service": "https://public.api.bsky.app/",
+            "service": "https://api.shatteredsky.net/",
           },
           "did": undefined,
         },
@@ -445,7 +445,7 @@ describe('session', () => {
         ],
         "currentAgentState": {
           "agent": {
-            "service": "https://public.api.bsky.app/",
+            "service": "https://api.shatteredsky.net/",
           },
           "did": undefined,
         },
@@ -507,7 +507,7 @@ describe('session', () => {
         ],
         "currentAgentState": {
           "agent": {
-            "service": "https://public.api.bsky.app/",
+            "service": "https://api.shatteredsky.net/",
           },
           "did": undefined,
         },
@@ -600,7 +600,7 @@ describe('session', () => {
         "accounts": [],
         "currentAgentState": {
           "agent": {
-            "service": "https://public.api.bsky.app/",
+            "service": "https://api.shatteredsky.net/",
           },
           "did": undefined,
         },
@@ -780,7 +780,7 @@ describe('session', () => {
         ],
         "currentAgentState": {
           "agent": {
-            "service": "https://public.api.bsky.app/",
+            "service": "https://api.shatteredsky.net/",
           },
           "did": undefined,
         },
@@ -1429,7 +1429,7 @@ describe('session', () => {
         ],
         "currentAgentState": {
           "agent": {
-            "service": "https://public.api.bsky.app/",
+            "service": "https://api.shatteredsky.net/",
           },
           "did": undefined,
         },
@@ -1495,7 +1495,7 @@ describe('session', () => {
         ],
         "currentAgentState": {
           "agent": {
-            "service": "https://public.api.bsky.app/",
+            "service": "https://api.shatteredsky.net/",
           },
           "did": undefined,
         },
@@ -1658,7 +1658,7 @@ describe('session', () => {
         ],
         "currentAgentState": {
           "agent": {
-            "service": "https://public.api.bsky.app/",
+            "service": "https://api.shatteredsky.net/",
           },
           "did": undefined,
         },
