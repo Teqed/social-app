@@ -84,7 +84,7 @@ func run(args []string) {
 					Name:     "cors-allowed-origins",
 					Usage:    "list of allowed origins for CORS requests",
 					Required: false,
-					Value:    cli.NewStringSlice("https://bsky.app", "https://main.bsky.dev", "https://app.staging.bsky.dev"),
+					Value:    cli.NewStringSlice("https://bsky.app", "https://main.bsky.dev", "https://app.staging.bsky.dev", "https://social.shatteredsky.net"),
 					EnvVars:  []string{"CORS_ALLOWED_ORIGINS"},
 				},
 				&cli.StringFlag{

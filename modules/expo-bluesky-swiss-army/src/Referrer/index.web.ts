@@ -17,7 +17,7 @@ export function getReferrerInfo(): ReferrerInfo | null {
   ) {
     try {
       const url = new URL(document.referrer)
-      if (url.hostname !== 'bsky.app') {
+      if (url.hostname !== 'social.shatteredsky.net') {
         return {
           referrer: url.href,
           hostname: url.hostname,

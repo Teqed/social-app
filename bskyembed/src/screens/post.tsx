@@ -90,9 +90,9 @@ function PwiOptOut({thread}: {thread: AppBskyFeedDefs.ThreadViewPost}) {
 
 function ErrorMessage() {
   return (
-    <Container href="https://bsky.app/">
+    <Container href="https://social.shatteredsky.net/">
       <Link
-        href="https://bsky.app/"
+        href="https://social.shatteredsky.net/"
         className="transition-transform hover:scale-110 absolute top-4 right-4">
         <img src={logo} className="h-6" />
       </Link>

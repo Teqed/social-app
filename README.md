@@ -4,7 +4,7 @@ Welcome friends! This is the codebase for the Catsky Social app.
 
 Get the app itself:
 
-- **Web: bsky.app**
+- **Web: social.shatteredsky.net**
 
 <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/NekoDrone/catsky-social">
 <img src="https://github.com/ImranR98/Obtainium/blob/main/assets/graphics/badge_obtainium.png?raw=true"
@@ -48,7 +48,7 @@ Catsky social is a soft fork of Bluesky social, and thus will also use those lex
 - Stay away from PRs like...
   - Changing "Post" to "Skeet."
   - Refactoring the codebase, e.g., to replace React Query with Redux Toolkit or something.
-  - Adding entirely new features without prior discussion. 
+  - Adding entirely new features without prior discussion.
 
 Remember, we serve a wide community of users. Our day-to-day involves us constantly asking "which top priority is our top priority." If you submit well-written PRs that solve problems concisely, that's an awesome contribution. Otherwise, as much as we'd love to accept your ideas and contributions, we really don't have the bandwidth. That's what forking is for!
 

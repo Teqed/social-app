@@ -74,7 +74,7 @@ export const envToCfg = (env: Environment): Config => {
     version: env.version,
     hostnames: env.hostnames,
     hostnamesSet: new Set(env.hostnames),
-    appHostname: env.appHostname ?? 'bsky.app',
+    appHostname: env.appHostname ?? 'social.shatteredsky.net',
     safelinkEnabled: env.safelinkEnabled ?? false,
     safelinkPdsUrl: env.safelinkPdsUrl,
     safelinkAgentIdentifier: env.safelinkAgentIdentifier,

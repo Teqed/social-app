@@ -18,6 +18,7 @@ module.exports = function (_config) {
   const IS_DEV = !IS_TESTFLIGHT || !IS_PRODUCTION
 
   const ASSOCIATED_DOMAINS = [
+    'applinks:shatteredsky.net',
     'applinks:bsky.app',
     'applinks:staging.bsky.app',
     'appclips:bsky.app',
@@ -159,7 +160,7 @@ module.exports = function (_config) {
             data: [
               {
                 scheme: 'https',
-                host: 'bsky.app',
+                host: 'social.shatteredsky.net',
               },
               IS_DEV && {
                 scheme: 'http',

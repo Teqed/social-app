@@ -7,8 +7,10 @@ import {isInvalidHandle} from '#/lib/strings/handles'
 import {startUriToStarterPackUri} from '#/lib/strings/starter-pack'
 import {logger} from '#/logger'
 
-export const BSKY_APP_HOST = 'https://bsky.app'
+export const BSKY_APP_HOST = 'https://social.shatteredsky.net'
 const BSKY_TRUSTED_HOSTS = [
+  'social\\.shatteredsky\\.net',
+  'shatteredsky\\.net',
   'bsky\\.app',
   'bsky\\.social',
   'blueskyweb\\.xyz',
@@ -91,7 +93,10 @@ export function toBskyAppUrl(url: string): string {
 }
 
 export function isBskyAppUrl(url: string): boolean {
-  return url.startsWith('https://bsky.app/')
+  return (
+    url.startsWith('https://bsky.app/') ||
+    url.startsWith('https://social.shatteredsky.net/')
+  )
 }
 
 export function isRelativeUrl(url: string): boolean {
@@ -100,7 +105,9 @@ export function isRelativeUrl(url: string): boolean {
 
 export function isBskyRSSUrl(url: string): boolean {
   return (
-    (url.startsWith('https://bsky.app/') || isRelativeUrl(url)) &&
+    (url.startsWith('https://bsky.app/') ||
+      url.startsWith('https://social.shatteredsky.net/') ||
+      isRelativeUrl(url)) &&
     /\/rss\/?$/.test(url)
   )
 }

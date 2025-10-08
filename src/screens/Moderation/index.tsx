@@ -423,11 +423,13 @@ export function ModerationScreenInner({
                         <Trans>
                           Adult content can only be enabled via the Web at{' '}
                           <InlineLinkText
-                            label={_(msg`The Bluesky web application`)}
+                            label={_(msg`The Shattered Sky web application`)}
                             to=""
                             onPress={evt => {
                               evt.preventDefault()
-                              Linking.openURL('https://bsky.app/')
+                              Linking.openURL(
+                                'https://social.shatteredsky.net/',
+                              )
                               return false
                             }}>
                             bsky.app

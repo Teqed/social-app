@@ -38,7 +38,7 @@ export function linkWarningContents(
     </div>
     <div class="button-group">
       ${continueButton}
-      <a class="button primary" href="https://bsky.app">${req.__('Return to Bluesky')}</a>
+      <a class="button primary" href="https://social.shatteredsky.net">${req.__('Return to Shattered Sky')}</a>
     </div>
   `
 }
