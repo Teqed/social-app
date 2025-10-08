@@ -9245,7 +9245,7 @@ msgstr "Tree view"
 
 #: src/view/shell/desktop/SidebarTrendingTopics.tsx:59
 msgid "Trending"
-msgstr "Trending"
+msgstr "Navigation"
 
 #: src/components/interstitials/TrendingVideos.tsx:86
 msgid "Trending Videos"
