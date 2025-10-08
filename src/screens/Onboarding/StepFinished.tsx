@@ -21,7 +21,6 @@ import {useQueryClient} from '@tanstack/react-query'
 
 import {uploadBlob} from '#/lib/api'
 import {
-  BSKY_APP_ACCOUNT_DID,
   DISCOVER_SAVED_FEED,
   TIMELINE_SAVED_FEED,
   VIDEO_SAVED_FEED,
@@ -48,7 +47,6 @@ import {
   TitleText,
 } from '#/screens/Onboarding/Layout'
 import {Context, type OnboardingState} from '#/screens/Onboarding/state'
-import {bulkWriteFollows} from '#/screens/Onboarding/util'
 import {
   atoms as a,
   native,
@@ -114,10 +112,6 @@ export function StepFinished() {
       const {selectedInterests} = interestsStepResults
 
       await Promise.all([
-        bulkWriteFollows(agent, [
-          BSKY_APP_ACCOUNT_DID,
-          ...(listItems?.map(i => i.subject.did) ?? []),
-        ]),
         (async () => {
           // Interests need to get saved first, then we can write the feeds to prefs
           await agent.setInterestsPref({tags: selectedInterests})
