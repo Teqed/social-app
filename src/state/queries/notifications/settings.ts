@@ -7,9 +7,8 @@ import {
   useQueryClient,
 } from '@tanstack/react-query'
 
-import {BLUESKY_PROXY_HEADER, PBLLC_BLUESKY_PROXY_HEADER} from '#/lib/constants'
 import {logger} from '#/logger'
-import {useAgent} from '#/state/session'
+import {getBskyAppviewAgent as getBskyAppviewAgent} from '#/state/session/appview-agent'
 import * as Toast from '#/view/com/util/Toast'
 
 const RQKEY_ROOT = 'notification-settings'
@@ -18,31 +17,29 @@ const RQKEY = [RQKEY_ROOT]
 export function useNotificationSettingsQuery({
   enabled,
 }: {enabled?: boolean} = {}) {
-  const agent = useAgent()
-
   return useQuery({
     queryKey: RQKEY,
     queryFn: async () => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      const response = await agent.app.bsky.notification.getPreferences()
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      // Use appview agent which already has PBLLC proxy configured
+      const bskyAppviewAgent = getBskyAppviewAgent()
+      const response =
+        await bskyAppviewAgent.app.bsky.notification.getPreferences()
       return response.data.preferences
     },
     enabled,
   })
 }
 export function useNotificationSettingsUpdateMutation() {
-  const agent = useAgent()
   const queryClient = useQueryClient()
 
   return useMutation({
     mutationFn: async (
       update: Partial<AppBskyNotificationDefs.Preferences>,
     ) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
+      // Use appview agent which already has PBLLC proxy configured
+      const appviewAgent = getBskyAppviewAgent()
       const response =
-        await agent.app.bsky.notification.putPreferencesV2(update)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+        await appviewAgent.app.bsky.notification.putPreferencesV2(update)
       return response.data.preferences
     },
     onMutate: update => {

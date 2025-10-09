@@ -14,6 +14,7 @@ import {
   createAgentAndResume,
   sessionAccountToSession,
 } from './agent'
+import {getBskyAppviewAgent} from './appview-agent'
 import {type Action, getInitialState, reducer, type State} from './reducer'
 
 export {isSignupQueued} from './util'
@@ -122,6 +123,10 @@ export function Provider({children}: React.PropsWithChildren<{}>) {
       if (signal.aborted) {
         return
       }
+
+      // Initialize the appview agent with the account
+      getBskyAppviewAgent().initializeWithAccount(account)
+
       store.dispatch({
         type: 'switched-to-account',
         newAgent: agent,
@@ -145,6 +150,10 @@ export function Provider({children}: React.PropsWithChildren<{}>) {
       if (signal.aborted) {
         return
       }
+
+      // Initialize the appview agent with the account
+      getBskyAppviewAgent().initializeWithAccount(account)
+
       store.dispatch({
         type: 'switched-to-account',
         newAgent: agent,
@@ -166,6 +175,10 @@ export function Provider({children}: React.PropsWithChildren<{}>) {
     logContext => {
       addSessionDebugLog({type: 'method:start', method: 'logout'})
       cancelPendingTask()
+
+      // Clear the appview agent session
+      getBskyAppviewAgent().clearSession()
+
       store.dispatch({
         type: 'logged-out-current-account',
       })
@@ -185,6 +198,10 @@ export function Provider({children}: React.PropsWithChildren<{}>) {
     logContext => {
       addSessionDebugLog({type: 'method:start', method: 'logout'})
       cancelPendingTask()
+
+      // Clear the appview agent session
+      getBskyAppviewAgent().clearSession()
+
       store.dispatch({
         type: 'logged-out-every-account',
       })
@@ -214,6 +231,10 @@ export function Provider({children}: React.PropsWithChildren<{}>) {
       if (signal.aborted) {
         return
       }
+
+      // Initialize the appview agent with the account
+      getBskyAppviewAgent().initializeWithAccount(account)
+
       store.dispatch({
         type: 'switched-to-account',
         newAgent: agent,
@@ -276,6 +297,10 @@ export function Provider({children}: React.PropsWithChildren<{}>) {
           const agent = state.currentAgentState.agent as BskyAgent
           const prevSession = agent.session
           agent.sessionManager.session = sessionAccountToSession(syncedAccount)
+
+          // Also update the appview agent with the current session
+          getBskyAppviewAgent().initializeWithAccount(syncedAccount)
+
           addSessionDebugLog({
             type: 'agent:patch',
             agent,
@@ -390,3 +415,5 @@ export function useAgent(): BskyAgent {
   }
   return agent
 }
+
+// No need to export anything, getAppviewAgent is already imported directly where needed

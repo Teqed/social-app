@@ -6,11 +6,7 @@ import {
 } from '@atproto/api'
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query'
 
-import {
-  BLUESKY_PROXY_HEADER,
-  PBLLC_BLUESKY_PROXY_HEADER,
-  PROD_DEFAULT_FEED,
-} from '#/lib/constants'
+import {PROD_DEFAULT_FEED} from '#/lib/constants'
 import {replaceEqualDeep} from '#/lib/functions'
 import {getAge} from '#/lib/strings/time'
 import {logger} from '#/logger'
@@ -28,6 +24,7 @@ import {
 } from '#/state/queries/preferences/types'
 import {useAgent} from '#/state/session'
 import {saveLabelers} from '#/state/session/agent-config'
+import {getBskyAppviewAgent} from '#/state/session/appview-agent'
 
 export * from '#/state/queries/preferences/const'
 export * from '#/state/queries/preferences/moderation'
@@ -49,9 +46,8 @@ export function usePreferencesQuery() {
       if (!agent.did) {
         return DEFAULT_LOGGED_OUT_PREFERENCES
       } else {
-        agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-        const res = await agent.getPreferences()
-        agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+        const appviewAgent = getBskyAppviewAgent()
+        const res = await appviewAgent.getPreferences()
 
         // save to local storage to ensure there are labels on initial requests
         saveLabelers(
@@ -99,13 +95,11 @@ export function usePreferencesQuery() {
 
 export function useClearPreferencesMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation({
     mutationFn: async () => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.app.bsky.actor.putPreferences({preferences: []})
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.app.bsky.actor.putPreferences({preferences: []})
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -115,7 +109,6 @@ export function useClearPreferencesMutation() {
 }
 
 export function usePreferencesSetContentLabelMutation() {
-  const agent = useAgent()
   const queryClient = useQueryClient()
 
   return useMutation<
@@ -124,9 +117,8 @@ export function usePreferencesSetContentLabelMutation() {
     {label: string; visibility: LabelPreference; labelerDid: string | undefined}
   >({
     mutationFn: async ({label, visibility, labelerDid}) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.setContentLabelPref(label, visibility, labelerDid)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.setContentLabelPref(label, visibility, labelerDid)
       logger.metric(
         'moderation:changeLabelPreference',
         {preference: visibility},
@@ -142,7 +134,6 @@ export function usePreferencesSetContentLabelMutation() {
 
 export function useSetContentLabelMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation({
     mutationFn: async ({
@@ -154,9 +145,8 @@ export function useSetContentLabelMutation() {
       visibility: LabelPreference
       labelerDid?: string
     }) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.setContentLabelPref(label, visibility, labelerDid)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.setContentLabelPref(label, visibility, labelerDid)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -167,13 +157,11 @@ export function useSetContentLabelMutation() {
 
 export function usePreferencesSetAdultContentMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation<void, unknown, {enabled: boolean}>({
     mutationFn: async ({enabled}) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.setAdultContentEnabled(enabled)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.setAdultContentEnabled(enabled)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -184,13 +172,13 @@ export function usePreferencesSetAdultContentMutation() {
 
 export function usePreferencesSetBirthDateMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation<void, unknown, {birthDate: Date}>({
     mutationFn: async ({birthDate}: {birthDate: Date}) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.setPersonalDetails({birthDate: birthDate.toISOString()})
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.setPersonalDetails({
+        birthDate: birthDate.toISOString(),
+      })
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -201,7 +189,6 @@ export function usePreferencesSetBirthDateMutation() {
 
 export function useSetFeedViewPreferencesMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation<void, unknown, Partial<BskyFeedViewPreference>>({
     mutationFn: async prefs => {
@@ -209,9 +196,8 @@ export function useSetFeedViewPreferencesMutation() {
        * special handling here, merged into `feedViewPrefs` above, since
        * following was previously called `home`
        */
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.setFeedViewPrefs('home', prefs)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.setFeedViewPrefs('home', prefs)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -222,13 +208,11 @@ export function useSetFeedViewPreferencesMutation() {
 
 export function useSetThreadViewPreferencesMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation<void, unknown, Partial<ThreadViewPreferences>>({
     mutationFn: async prefs => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.setThreadViewPrefs(prefs)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.setThreadViewPrefs(prefs)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -239,13 +223,11 @@ export function useSetThreadViewPreferencesMutation() {
 
 export function useOverwriteSavedFeedsMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation<void, unknown, AppBskyActorDefs.SavedFeed[]>({
     mutationFn: async savedFeeds => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.overwriteSavedFeeds(savedFeeds)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.overwriteSavedFeeds(savedFeeds)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -256,7 +238,6 @@ export function useOverwriteSavedFeedsMutation() {
 
 export function useAddSavedFeedsMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation<
     void,
@@ -264,9 +245,8 @@ export function useAddSavedFeedsMutation() {
     Pick<AppBskyActorDefs.SavedFeed, 'type' | 'value' | 'pinned'>[]
   >({
     mutationFn: async savedFeeds => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.addSavedFeeds(savedFeeds)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.addSavedFeeds(savedFeeds)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -277,13 +257,11 @@ export function useAddSavedFeedsMutation() {
 
 export function useRemoveFeedMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation<void, unknown, Pick<AppBskyActorDefs.SavedFeed, 'id'>>({
     mutationFn: async savedFeed => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.removeSavedFeeds([savedFeed.id])
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.removeSavedFeeds([savedFeed.id])
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -294,7 +272,6 @@ export function useRemoveFeedMutation() {
 
 export function useReplaceForYouWithDiscoverFeedMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation({
     mutationFn: async ({
@@ -304,12 +281,12 @@ export function useReplaceForYouWithDiscoverFeedMutation() {
       forYouFeedConfig: AppBskyActorDefs.SavedFeed | undefined
       discoverFeedConfig: AppBskyActorDefs.SavedFeed | undefined
     }) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
       if (forYouFeedConfig) {
-        await agent.removeSavedFeeds([forYouFeedConfig.id])
+        await appviewAgent.removeSavedFeeds([forYouFeedConfig.id])
       }
       if (!discoverFeedConfig) {
-        await agent.addSavedFeeds([
+        await appviewAgent.addSavedFeeds([
           {
             type: 'feed',
             value: PROD_DEFAULT_FEED('Discover'),
@@ -317,14 +294,13 @@ export function useReplaceForYouWithDiscoverFeedMutation() {
           },
         ])
       } else {
-        await agent.updateSavedFeeds([
+        await appviewAgent.updateSavedFeeds([
           {
             ...discoverFeedConfig,
             pinned: true,
           },
         ])
       }
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -335,13 +311,11 @@ export function useReplaceForYouWithDiscoverFeedMutation() {
 
 export function useUpdateSavedFeedsMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation<void, unknown, AppBskyActorDefs.SavedFeed[]>({
     mutationFn: async feeds => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.updateSavedFeeds(feeds)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.updateSavedFeeds(feeds)
 
       // triggers a refetch
       await queryClient.invalidateQueries({
@@ -353,13 +327,11 @@ export function useUpdateSavedFeedsMutation() {
 
 export function useUpsertMutedWordsMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation({
     mutationFn: async (mutedWords: AppBskyActorDefs.MutedWord[]) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.upsertMutedWords(mutedWords)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.upsertMutedWords(mutedWords)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -370,13 +342,11 @@ export function useUpsertMutedWordsMutation() {
 
 export function useUpdateMutedWordMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation({
     mutationFn: async (mutedWord: AppBskyActorDefs.MutedWord) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.updateMutedWord(mutedWord)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.updateMutedWord(mutedWord)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -387,13 +357,11 @@ export function useUpdateMutedWordMutation() {
 
 export function useRemoveMutedWordMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation({
     mutationFn: async (mutedWord: AppBskyActorDefs.MutedWord) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.removeMutedWord(mutedWord)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.removeMutedWord(mutedWord)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -404,13 +372,11 @@ export function useRemoveMutedWordMutation() {
 
 export function useRemoveMutedWordsMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation({
     mutationFn: async (mutedWords: AppBskyActorDefs.MutedWord[]) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.removeMutedWords(mutedWords)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.removeMutedWords(mutedWords)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -421,13 +387,11 @@ export function useRemoveMutedWordsMutation() {
 
 export function useQueueNudgesMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation({
     mutationFn: async (nudges: string | string[]) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.bskyAppQueueNudges(nudges)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.bskyAppQueueNudges(nudges)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -438,13 +402,11 @@ export function useQueueNudgesMutation() {
 
 export function useDismissNudgesMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation({
     mutationFn: async (nudges: string | string[]) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.bskyAppDismissNudges(nudges)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.bskyAppDismissNudges(nudges)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -455,15 +417,13 @@ export function useDismissNudgesMutation() {
 
 export function useSetActiveProgressGuideMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation({
     mutationFn: async (
       guide: AppBskyActorDefs.BskyAppProgressGuide | undefined,
     ) => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.bskyAppSetActiveProgressGuide(guide)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.bskyAppSetActiveProgressGuide(guide)
       // triggers a refetch
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
@@ -474,13 +434,11 @@ export function useSetActiveProgressGuideMutation() {
 
 export function useSetVerificationPrefsMutation() {
   const queryClient = useQueryClient()
-  const agent = useAgent()
 
   return useMutation<void, unknown, AppBskyActorDefs.VerificationPrefs>({
     mutationFn: async prefs => {
-      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
-      await agent.setVerificationPrefs(prefs)
-      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
+      const appviewAgent = getBskyAppviewAgent()
+      await appviewAgent.setVerificationPrefs(prefs)
       if (prefs.hideBadges) {
         logger.metric('verification:settings:hideBadges', {}, {statsig: true})
       } else {
