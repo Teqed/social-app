@@ -2,7 +2,7 @@ import {type Insets, Platform} from 'react-native'
 import {type AppBskyActorDefs, BSKY_LABELER_DID} from '@atproto/api'
 
 import {type ProxyHeaderValue} from '#/state/session/agent'
-import {BLUESKY_PROXY_DID, CHAT_PROXY_DID} from '#/env'
+import {BLUESKY_PROXY_DID, CHAT_PROXY_DID, PBLLC_BLUESKY_PROXY_DID} from '#/env'
 
 export const LOCAL_DEV_SERVICE =
   Platform.OS === 'android' ? 'http://10.0.2.2:2583' : 'http://localhost:2583'
@@ -206,6 +206,15 @@ export const DEV_ENV_APPVIEW = `http://localhost:2584` // always the same
 // temp hack for e2e - esb
 export const BLUESKY_PROXY_HEADER = {
   value: `${BLUESKY_PROXY_DID}#bsky_appview`,
+  get() {
+    return this.value as ProxyHeaderValue
+  },
+  set(value: string) {
+    this.value = value
+  },
+}
+export const PBLLC_BLUESKY_PROXY_HEADER = {
+  value: `${PBLLC_BLUESKY_PROXY_DID}#bsky_appview`,
   get() {
     return this.value as ProxyHeaderValue
   },

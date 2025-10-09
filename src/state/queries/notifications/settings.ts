@@ -7,6 +7,7 @@ import {
   useQueryClient,
 } from '@tanstack/react-query'
 
+import {BLUESKY_PROXY_HEADER, PBLLC_BLUESKY_PROXY_HEADER} from '#/lib/constants'
 import {logger} from '#/logger'
 import {useAgent} from '#/state/session'
 import * as Toast from '#/view/com/util/Toast'
@@ -22,7 +23,9 @@ export function useNotificationSettingsQuery({
   return useQuery({
     queryKey: RQKEY,
     queryFn: async () => {
+      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
       const response = await agent.app.bsky.notification.getPreferences()
+      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
       return response.data.preferences
     },
     enabled,
@@ -36,8 +39,10 @@ export function useNotificationSettingsUpdateMutation() {
     mutationFn: async (
       update: Partial<AppBskyNotificationDefs.Preferences>,
     ) => {
+      agent.configureProxy(PBLLC_BLUESKY_PROXY_HEADER.get())
       const response =
         await agent.app.bsky.notification.putPreferencesV2(update)
+      agent.configureProxy(BLUESKY_PROXY_HEADER.get())
       return response.data.preferences
     },
     onMutate: update => {

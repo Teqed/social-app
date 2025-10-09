@@ -67,6 +67,10 @@ export const LOG_DEBUG: string = process.env.EXPO_PUBLIC_LOG_DEBUG || ''
  */
 export const BLUESKY_PROXY_DID: Did =
   process.env.EXPO_PUBLIC_BLUESKY_PROXY_DID || 'did:web:api.shatteredsky.net'
+/**
+ * The DID of the PBLLC Bluesky appview to proxy to
+ */
+export const PBLLC_BLUESKY_PROXY_DID: Did = 'did:web:api.bsky.app'
 
 /**
  * The DID of the chat service to proxy to
