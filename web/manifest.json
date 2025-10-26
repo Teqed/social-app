@@ -1,0 +1,25 @@
+{
+  "short_name": "Catsky",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/pwa-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/pwa-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "id": "social.catsky", 
+  "theme_color": "rgb(30, 30, 46)",
+  "background_color": "rgb(30, 30, 46)"
+}
