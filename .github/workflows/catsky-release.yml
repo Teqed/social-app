@@ -1,5 +1,9 @@
 name: Release Catsky
-on: workflow_dispatch # could be weekly/etc or on a separate branch.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "25 2 * * 1" # at 02:25 on monday
 
 jobs:
   build-android:
@@ -54,14 +58,18 @@ jobs:
           name: android
           path: .
 
+      - name: Get release date
+        id: date
+        run: echo "date=$(date +'%Y.%m.%d')" >> $GITHUB_OUTPUT
+
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: catsky-v${{ github.run_number }}
-          release_name: Catsky v${{ github.run_number }}
+          tag_name: catsky-${{ steps.date.outputs.date }}
+          release_name: Catsky ${{ steps.date.output.date }}
           draft: false
           prerelease: false
 
