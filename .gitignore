@@ -98,6 +98,8 @@ stats.json
 # environment variables
 .env
 .env.*
+.envrc
+.direnv/
 
 # Firebase (Android) Google services
 google-services.json
@@ -119,3 +121,6 @@ src/locale/locales/**/*.js
 
 # ogcard assets
 bskyogcard/src/assets/fonts/noto-*
+
+# built static assets
+bskyweb/static/media/
