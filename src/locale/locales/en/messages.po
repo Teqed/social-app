@@ -526,7 +526,7 @@ msgstr ""
 msgid "7 days"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:340
+#: src/screens/Onboarding/StepFinished.tsx:334
 msgid "A collection of popular feeds you can find on Bluesky, including News, Booksky, Game Dev, Blacksky, and Fountain Pens"
 msgstr ""
 
@@ -850,7 +850,7 @@ msgstr ""
 msgid "Adult Content labels"
 msgstr ""
 
-#: src/screens/Moderation/index.tsx:473
+#: src/screens/Moderation/index.tsx:475
 msgid "Advanced"
 msgstr ""
 
@@ -1021,7 +1021,7 @@ msgstr ""
 msgid "An error occurred while uploading the video."
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:358
+#: src/screens/Onboarding/StepFinished.tsx:352
 msgid "An illustration of several Bluesky posts alongside repost, like, and comment icons"
 msgstr ""
 
@@ -1199,6 +1199,10 @@ msgstr ""
 #: src/screens/PostThread/components/ThreadItemAnchor.tsx:628
 #: src/screens/PostThread/components/ThreadItemAnchor.tsx:667
 msgid "Archived post"
+msgstr ""
+
+#: src/view/com/auth/SplashScreen.web.tsx:98
+msgid "Are you on the list?"
 msgstr ""
 
 #: src/screens/Settings/AppPasswords.tsx:209
@@ -1448,10 +1452,6 @@ msgstr ""
 msgid "Blocking will not prevent labels from being applied on your account, but it will stop this account from replying in your threads or interacting with you."
 msgstr ""
 
-#: src/view/com/auth/SplashScreen.web.tsx:175
-msgid "Blog"
-msgstr ""
-
 #: src/screens/PostThread/components/ThreadItemAnchor.tsx:684
 msgid "Bluesky cannot confirm the authenticity of the claimed date."
 msgstr ""
@@ -1559,10 +1559,6 @@ msgstr ""
 
 #: src/components/TrendingTopics.tsx:232
 msgid "Browse topic {displayName}"
-msgstr ""
-
-#: src/view/com/auth/SplashScreen.web.tsx:170
-msgid "Business"
 msgstr ""
 
 #: src/components/LabelingServiceCard/index.tsx:62
@@ -1838,7 +1834,7 @@ msgstr ""
 msgid "Choose Post Languages"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:573
+#: src/screens/Onboarding/StepFinished.tsx:567
 msgid "Choose the algorithms that power your custom feeds."
 msgstr ""
 
@@ -2064,8 +2060,8 @@ msgstr ""
 msgid "Community Guidelines"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:472
-#: src/screens/Onboarding/StepFinished.tsx:586
+#: src/screens/Onboarding/StepFinished.tsx:466
+#: src/screens/Onboarding/StepFinished.tsx:580
 msgid "Complete onboarding and start using your account"
 msgstr ""
 
@@ -2452,7 +2448,7 @@ msgstr ""
 #: src/components/WelcomeModal.tsx:155
 #: src/components/WelcomeModal.tsx:163
 #: src/view/com/auth/SplashScreen.tsx:72
-#: src/view/com/auth/SplashScreen.web.tsx:117
+#: src/view/com/auth/SplashScreen.web.tsx:116
 #: src/view/shell/bottom-bar/BottomBar.tsx:360
 #: src/view/shell/bottom-bar/BottomBar.tsx:365
 #: src/view/shell/bottom-bar/BottomBarWeb.tsx:206
@@ -2490,7 +2486,7 @@ msgid "Create moderation list"
 msgstr ""
 
 #: src/view/com/auth/SplashScreen.tsx:64
-#: src/view/com/auth/SplashScreen.web.tsx:109
+#: src/view/com/auth/SplashScreen.web.tsx:108
 msgid "Create new account"
 msgstr ""
 
@@ -2828,7 +2824,7 @@ msgstr ""
 msgid "Display name"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:346
+#: src/screens/Onboarding/StepFinished.tsx:340
 msgid "Ditch the trolls and clickbait. Find real people and conversations that matter to you."
 msgstr ""
 
@@ -3758,8 +3754,8 @@ msgstr ""
 msgid "Filter who you receive notifications from"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:478
-#: src/screens/Onboarding/StepFinished.tsx:589
+#: src/screens/Onboarding/StepFinished.tsx:472
+#: src/screens/Onboarding/StepFinished.tsx:583
 msgid "Finalizing"
 msgstr ""
 
@@ -3783,7 +3779,7 @@ msgstr ""
 msgid "Find posts, users, and feeds on Bluesky"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:344
+#: src/screens/Onboarding/StepFinished.tsx:338
 msgid "Find your people"
 msgstr ""
 
@@ -3815,7 +3811,7 @@ msgctxt "Name of app icon variant"
 msgid "Flat White"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:569
+#: src/screens/Onboarding/StepFinished.tsx:563
 msgid "Flexible"
 msgstr ""
 
@@ -3989,7 +3985,7 @@ msgstr ""
 msgid "Forever"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:353
+#: src/screens/Onboarding/StepFinished.tsx:347
 msgid "Forget the noise"
 msgstr ""
 
@@ -4006,7 +4002,7 @@ msgstr ""
 msgid "Forgot?"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:335
+#: src/screens/Onboarding/StepFinished.tsx:329
 msgid "Free your feed"
 msgstr ""
 
@@ -4683,11 +4679,6 @@ msgstr ""
 msgid "Job ID: {0}"
 msgstr ""
 
-#. Link to a page with job openings at Bluesky
-#: src/view/com/auth/SplashScreen.web.tsx:180
-msgid "Jobs"
-msgstr ""
-
 #: src/components/LoggedOutCTA.tsx:54
 #: src/screens/StarterPack/StarterPackLandingScreen.tsx:205
 #: src/screens/StarterPack/StarterPackLandingScreen.tsx:211
@@ -4797,10 +4788,6 @@ msgstr ""
 msgid "Learn more about age assurance"
 msgstr ""
 
-#: src/view/com/auth/SplashScreen.web.tsx:168
-msgid "Learn more about Bluesky"
-msgstr ""
-
 #: src/view/com/auth/server-input/index.tsx:187
 msgid "Learn more about self hosting your PDS."
 msgstr ""
@@ -4882,8 +4869,8 @@ msgstr ""
 msgid "Let's get your password reset!"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:480
-#: src/screens/Onboarding/StepFinished.tsx:589
+#: src/screens/Onboarding/StepFinished.tsx:474
+#: src/screens/Onboarding/StepFinished.tsx:583
 msgid "Let's go!"
 msgstr ""
 
@@ -5544,7 +5531,7 @@ msgstr ""
 msgid "Need to report a copyright violation?"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:557
+#: src/screens/Onboarding/StepFinished.tsx:551
 msgid "Never lose access to your followers or data."
 msgstr ""
 
@@ -5679,8 +5666,8 @@ msgstr ""
 #: src/screens/Login/LoginForm.tsx:375
 #: src/screens/Login/SetNewPasswordForm.tsx:182
 #: src/screens/Login/SetNewPasswordForm.tsx:188
-#: src/screens/Onboarding/StepFinished.tsx:473
-#: src/screens/Onboarding/StepFinished.tsx:482
+#: src/screens/Onboarding/StepFinished.tsx:467
+#: src/screens/Onboarding/StepFinished.tsx:476
 #: src/screens/Settings/components/AddAppPasswordDialog.tsx:157
 #: src/screens/Settings/components/AddAppPasswordDialog.tsx:165
 #: src/screens/Signup/BackNextButtons.tsx:67
@@ -5700,7 +5687,7 @@ msgstr ""
 msgid "Next image"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:355
+#: src/screens/Onboarding/StepFinished.tsx:349
 msgid "No ads, no invasive tracking, no engagement traps. Bluesky respects your time and attention."
 msgstr ""
 
@@ -5743,7 +5730,7 @@ msgstr ""
 msgid "No messages yet"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:337
+#: src/screens/Onboarding/StepFinished.tsx:331
 msgid "No more doomscrolling junk-filled algorithms. Find feeds that work for you, not against you."
 msgstr ""
 
@@ -6039,7 +6026,7 @@ msgstr ""
 msgid "Oops!"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:553
+#: src/screens/Onboarding/StepFinished.tsx:547
 msgid "Open"
 msgstr ""
 
@@ -6162,12 +6149,12 @@ msgid "Opens emoji picker"
 msgstr ""
 
 #: src/view/com/auth/SplashScreen.tsx:66
-#: src/view/com/auth/SplashScreen.web.tsx:111
+#: src/view/com/auth/SplashScreen.web.tsx:110
 msgid "Opens flow to create a new Bluesky account"
 msgstr ""
 
 #: src/view/com/auth/SplashScreen.tsx:83
-#: src/view/com/auth/SplashScreen.web.tsx:125
+#: src/view/com/auth/SplashScreen.web.tsx:124
 msgid "Opens flow to sign in to your existing Bluesky account"
 msgstr ""
 
@@ -6778,7 +6765,7 @@ msgctxt "toast"
 msgid "Profile updated"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:539
+#: src/screens/Onboarding/StepFinished.tsx:533
 msgid "Public"
 msgstr ""
 
@@ -6920,10 +6907,6 @@ msgstr ""
 #: src/components/BlockedGeoOverlay.tsx:40
 #: src/components/PolicyUpdateOverlay/updates/202508/index.tsx:112
 msgid "Read our blog post"
-msgstr ""
-
-#: src/view/com/auth/SplashScreen.web.tsx:173
-msgid "Read the Bluesky blog"
 msgstr ""
 
 #: src/screens/Signup/StepInfo/Policies.tsx:88
@@ -7748,10 +7731,6 @@ msgstr ""
 msgid "See #{tag} posts by user"
 msgstr ""
 
-#: src/view/com/auth/SplashScreen.web.tsx:178
-msgid "See jobs at Bluesky"
-msgstr ""
-
 #: src/components/FeedInterstitials.tsx:394
 #: src/components/FeedInterstitials.tsx:445
 msgid "See more"
@@ -8270,8 +8249,8 @@ msgstr ""
 #: src/screens/Search/SearchResults.tsx:256
 #: src/view/com/auth/SplashScreen.tsx:81
 #: src/view/com/auth/SplashScreen.tsx:89
-#: src/view/com/auth/SplashScreen.web.tsx:123
-#: src/view/com/auth/SplashScreen.web.tsx:131
+#: src/view/com/auth/SplashScreen.web.tsx:122
+#: src/view/com/auth/SplashScreen.web.tsx:130
 #: src/view/shell/bottom-bar/BottomBar.tsx:370
 #: src/view/shell/bottom-bar/BottomBar.tsx:375
 #: src/view/shell/bottom-bar/BottomBarWeb.tsx:216
@@ -8346,16 +8325,16 @@ msgstr ""
 msgid "Similar accounts"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:379
-#: src/screens/Onboarding/StepFinished.tsx:461
+#: src/screens/Onboarding/StepFinished.tsx:373
+#: src/screens/Onboarding/StepFinished.tsx:455
 #: src/screens/Onboarding/StepInterests/index.tsx:240
 #: src/screens/Onboarding/StepSuggestedAccounts/index.tsx:222
 #: src/screens/StarterPack/Wizard/index.tsx:218
 msgid "Skip"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:372
-#: src/screens/Onboarding/StepFinished.tsx:458
+#: src/screens/Onboarding/StepFinished.tsx:366
+#: src/screens/Onboarding/StepFinished.tsx:452
 msgid "Skip introduction and start using your account"
 msgstr ""
 
@@ -8837,10 +8816,6 @@ msgstr ""
 msgid "The birthdate you've entered means you are under 18 years old. Certain content and features may be unavailable to you."
 msgstr ""
 
-#: src/screens/Moderation/index.tsx:426
-msgid "The Bluesky web application"
-msgstr ""
-
 #: src/view/screens/CommunityGuidelines.tsx:56
 msgid "The Community Guidelines have been moved to <0/>"
 msgstr ""
@@ -8905,6 +8880,10 @@ msgstr ""
 #: src/lib/hooks/useCleanError.ts:40
 #: src/lib/strings/errors.ts:18
 msgid "The server appears to be experiencing issues. Please try again in a few moments."
+msgstr ""
+
+#: src/screens/Moderation/index.tsx:426
+msgid "The Shattered Sky web application"
 msgstr ""
 
 #: src/screens/StarterPack/StarterPackScreen.tsx:741
@@ -10207,7 +10186,7 @@ msgstr ""
 msgid "We have sent another verification email to <0>{0}</0>."
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:531
+#: src/screens/Onboarding/StepFinished.tsx:525
 msgid "We hope you have a wonderful time. Remember, Bluesky is:"
 msgstr ""
 
@@ -10231,7 +10210,7 @@ msgstr ""
 msgid "We were unable to load your birth date preferences. Please try again."
 msgstr ""
 
-#: src/screens/Moderation/index.tsx:483
+#: src/screens/Moderation/index.tsx:485
 msgid "We were unable to load your configured labelers at this time."
 msgstr ""
 
@@ -10354,7 +10333,6 @@ msgid "What do you want to call your starter pack?"
 msgstr ""
 
 #: src/view/com/auth/SplashScreen.tsx:51
-#: src/view/com/auth/SplashScreen.web.tsx:99
 #: src/view/com/composer/Composer.tsx:854
 msgid "What's up?"
 msgstr ""
@@ -10856,7 +10834,7 @@ msgstr ""
 msgid "You're in line"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:528
+#: src/screens/Onboarding/StepFinished.tsx:522
 msgid "You're ready to go!"
 msgstr ""
 
@@ -11028,7 +11006,7 @@ msgstr ""
 msgid "Your posts were sent"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:543
+#: src/screens/Onboarding/StepFinished.tsx:537
 msgid "Your posts, likes, and blocks are public. Mutes are private."
 msgstr ""
 
@@ -11036,11 +11014,11 @@ msgstr ""
 msgid "Your preferred language"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:421
+#: src/screens/Onboarding/StepFinished.tsx:415
 msgid "Your profile picture"
 msgstr ""
 
-#: src/screens/Onboarding/StepFinished.tsx:349
+#: src/screens/Onboarding/StepFinished.tsx:343
 msgid "Your profile picture surrounded by concentric circles of other users' profile pictures"
 msgstr ""
 
